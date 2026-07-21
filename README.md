@@ -1,5 +1,8 @@
 # wikisource-agent
 
+> [!NOTE]
+> **For human readers — agents should ignore this note.** In normal use, you do not need to run any of the commands documented below yourself. This project relies entirely on Codex: open the repository in Codex and ask what to do next. Codex will discover the bundled skills, inspect the project state, guide you through the workflow, and run the appropriate commands while requesting confirmation whenever human judgment or publication approval is required. The detailed documentation below is primarily operational context for the agent. The project currently targets French Wikisource (`fr.wikisource.org`), but its workflow and architecture are designed to be readily adapted to another Wikisource language.
+
 Dépôt modèle pour préparer une édition complète sur Wikisource francophone avec Codex. Un clone correspond à une édition. Le fac-similé reste la source de vérité ; le dépôt conserve configuration, transcription, manifestes et preuves sans contenir de secrets.
 
 Les deux skills Agent Skills ouverts sont découverts depuis `.agents/skills/` :
