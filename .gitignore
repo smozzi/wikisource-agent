@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Le fac-similé et ses dérivés sont locaux ; le manifeste reste versionné.
+facsimile/*
+!facsimile/.gitkeep
+!facsimile/CORPUS_MANIFEST.json
+
+# Profils, réponses OCR brutes et temporaires ne doivent pas entrer dans Git.
+.chrome-profile/
+ocr-raw/
+*.tmp
+*.bak

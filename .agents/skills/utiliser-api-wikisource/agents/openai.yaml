@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Wikisource FR"
+  short_description: "Synchroniser et publier avec garde-fous"
+  default_prompt: "Utilise $utiliser-api-wikisource pour synchroniser et prévisualiser cette publication."

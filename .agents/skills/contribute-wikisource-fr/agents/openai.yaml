@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contribuer à Wikisource FR"
+  short_description: "Préparer et finaliser une édition Wikisource"
+  default_prompt: "Utilise $contribute-wikisource-fr pour préparer cette édition de bout en bout."
