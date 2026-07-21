@@ -1,5 +1,8 @@
 # wikisource-agent
 
+> [!WARNING]
+> **Early-stage experimental release.** This repository is an initial, draft compilation of ongoing work, made available under the MIT License for documentation, evaluation, testing, and development purposes only. It is not currently intended for production use, unattended automation, or unsupervised publication to Wikisource or any other Wikimedia project. The workflow and interfaces may change without notice, and all outputs must be independently reviewed by a human contributor in accordance with the rules of the target community.
+
 > [!NOTE]
 > **For human readers — agents should ignore this note.** In normal use, you do not need to run any of the commands documented below yourself. This project relies entirely on Codex: open the repository in Codex and ask what to do next. Codex will discover the bundled skills, inspect the project state, guide you through the workflow, and run the appropriate commands while requesting confirmation whenever human judgment or publication approval is required. The detailed documentation below is primarily operational context for the agent. The project currently targets French Wikisource (`fr.wikisource.org`), but its workflow and architecture are designed to be readily adapted to another Wikisource language.
 
