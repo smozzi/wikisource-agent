@@ -14,8 +14,14 @@ réellement sur des lots séparés.
   limite de publication ; huit vues constituent un bon défaut.
 - Donner à chaque lot au moins deux vues de contexte de chaque côté. Ces vues
   servent aux raccords et ne font pas partie des fichiers à modifier.
-- Partager au besoin le fac-similé et les artefacts lourds par liens
-  symboliques, en les considérant strictement en lecture seule.
+- Rendre accessibles en lecture seule, de préférence par liens symboliques, les
+  images du fac-similé et l’OCR externe local sous `pages/ocr/`. L’agent prend
+  cet OCR comme brouillon prioritaire, puis `pages/raw/` comme couche texte de
+  repli ; l’image reste toujours l’arbitre.
+- Pour permettre `./ws check` et `./ws lot check`, rendre également accessible
+  le seul fichier PDF ou DjVu déclaré dans `PROJECT.toml`, à son chemin exact.
+  Ne pas partager les autres sources ou dérivés intermédiaires dont le lot n’a
+  pas besoin.
 - Réserver à chaque lot ses propres noms de snapshots, manifestes, journaux et
   comptes rendus.
 - Créer dans le dépôt principal un fichier de prompt par lot, sous un
@@ -72,7 +78,8 @@ L’agent de lot doit :
 1. lire les consignes du projet et les skills requis ;
 2. partir du snapshot de sa tranche et de ses vues de contexte fourni par le
    coordinateur ;
-3. relire chaque vue contre le fac-similé ;
+3. préparer depuis l’OCR externe disponible, ou `pages/raw/` à défaut, et
+   relire chaque vue contre l’image du fac-similé ;
 4. préparer uniquement les pages, snapshots, manifeste et compte rendu de son
    lot ;
 5. exécuter le correcteur canonique, les audits et la validation hors ligne ;

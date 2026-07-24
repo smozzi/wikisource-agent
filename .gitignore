@@ -13,5 +13,6 @@ facsimile/*
 # Profils, réponses OCR brutes et temporaires ne doivent pas entrer dans Git.
 .chrome-profile/
 ocr-raw/
+pages/ocr/
 *.tmp
 *.bak
