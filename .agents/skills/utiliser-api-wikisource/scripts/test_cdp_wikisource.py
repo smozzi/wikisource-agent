@@ -114,6 +114,15 @@ class ManifestTests(unittest.TestCase):
             module.normalize_saved_wikitext(remote),
         )
 
+    def test_mediawiki_empty_footer_normalization(self):
+        local = "Texte sans balise finale"
+        remote = "Texte sans balise finale<noinclude></noinclude>"
+        self.assertEqual(
+            module.normalize_saved_wikitext(local),
+            module.normalize_saved_wikitext(remote),
+        )
+
+
     def test_body_whitespace_is_not_ignored(self):
         self.assertNotEqual(
             module.normalize_saved_wikitext("un  texte"),

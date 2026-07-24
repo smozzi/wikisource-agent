@@ -2,12 +2,14 @@
 
 Employer ce mode lorsqu’une édition assez longue peut être divisée en lots
 éditoriaux indépendants. Paralléliser la préparation, jamais les écritures sur
-les wikis.
+les wikis. Ne créer `coordination/` que lorsque plusieurs agents travaillent
+réellement sur des lots séparés.
 
 ## Préparer le dépôt
 
 - Établir un commit de référence avant de créer les branches.
-- Créer un worktree et une branche propres par lot.
+- Créer un worktree et une branche propres par lot. Cette préparation relève du
+  coordinateur et précède toute délégation.
 - Attribuer des lots explicitement disjoints, de taille compatible avec la
   limite de publication ; huit vues constituent un bon défaut.
 - Donner à chaque lot au moins deux vues de contexte de chaque côté. Ces vues
@@ -24,11 +26,17 @@ les wikis.
 
 ## Fournir les commandes de lancement Codex
 
-Après avoir créé les worktrees et rédigé les prompts, ne pas demander à
-l’utilisateur de recomposer les commandes, de retrouver les répertoires ou de
-copier séparément le contenu des prompts. Vérifier d’abord la syntaxe de la CLI
-installée avec `codex --help`, puis fournir une commande complète et directement
-exécutable par lot.
+Lorsque l’environnement permet d’invoquer directement des sous-agents dans des
+espaces de travail isolés, le coordinateur les lance lui-même avec le worktree
+et le prompt du lot. Il consulte l’interface disponible sans supposer le nom
+d’un outil, ses paramètres ou un mode de partage.
+
+Lorsque des sessions CLI externes sont nécessaires, après avoir créé les
+worktrees et rédigé les prompts, ne pas demander à l’utilisateur de recomposer
+les commandes, de retrouver les répertoires ou de copier séparément le contenu
+des prompts. Vérifier d’abord la syntaxe de la CLI installée avec
+`codex --help`, puis fournir une commande complète et directement exécutable
+par lot.
 
 Pour une session interactive, employer normalement :
 
@@ -45,7 +53,7 @@ l’agent.
 Employer `codex exec` seulement si l’utilisateur demande explicitement une
 exécution non interactive. Ne pas ajouter
 `--dangerously-bypass-approvals-and-sandbox`, ne pas relâcher la politique
-d’approbation et ne pas lancer automatiquement les commandes à la place de
+d’approbation et ne pas lancer automatiquement les commandes CLI à la place de
 l’utilisateur sauf demande explicite.
 
 Avant remise, contrôler pour chaque commande :
@@ -62,7 +70,8 @@ Avant remise, contrôler pour chaque commande :
 L’agent de lot doit :
 
 1. lire les consignes du projet et les skills requis ;
-2. synchroniser sa tranche et ses vues de contexte ;
+2. partir du snapshot de sa tranche et de ses vues de contexte fourni par le
+   coordinateur ;
 3. relire chaque vue contre le fac-similé ;
 4. préparer uniquement les pages, snapshots, manifeste et compte rendu de son
    lot ;
@@ -76,14 +85,17 @@ L’agent coordinateur doit :
 1. ne traiter lui-même aucun lot éditorial : il doit confier chaque lot à un
    agent de lot distinct et se limiter à l’orchestration, au contrôle et à
    l’intégration ;
-2. attribuer des lots non chevauchants, enregistrer les prompts et fournir les
-   commandes `codex` complètes permettant de les lancer directement ;
+2. créer les worktrees, attribuer des lots non chevauchants, enregistrer les
+   prompts et invoquer les sous-agents ou fournir les commandes `codex`
+   complètes permettant de les lancer directement ;
 3. auditer puis intégrer les commits un à un, sans reprendre aveuglément les
    conflits ;
-4. contrôler les raccords entre lots voisins après intégration ;
-5. resynchroniser l’état distant avant publication ;
-6. centraliser l’identité, les preflights, les écritures et les snapshots
-   post-publication ;
+4. contrôler les raccords entre lots voisins et avec les vues de contexte
+   après intégration ;
+5. centraliser l’identité et toutes les opérations distantes :
+   synchronisations, preflights, écritures et snapshots post-publication ;
+6. présenter les cibles, raccords et contrôles intégrés, puis obtenir
+   l’approbation explicite de l’utilisateur avant toute publication ;
 7. publier les lots séquentiellement en respectant la limite de débit ;
 8. archiver les preuves de publication avant de retirer éventuellement les
    worktrees.
@@ -131,7 +143,14 @@ intégration, le coordinateur doit :
    base des modifications sont inchangées ;
 3. revérifier l’identité et l’accès en écriture ;
 4. exécuter le `preflight` immédiatement avant le `publish` ;
-5. publier un seul lot, puis attendre la fenêtre de débit avant le suivant.
+5. présenter à l’utilisateur les lots, cibles, raccords, incertitudes et
+   résultats des contrôles, puis s’arrêter ;
+6. attendre son approbation explicite avant de publier un seul lot, puis
+   attendre la fenêtre de débit avant le suivant.
+
+Une approbation porte seulement sur les cibles et manifestes présentés. Si
+l’état distant change ou si une nouvelle cible apparaît, demander une nouvelle
+approbation.
 
 Une demande d’autorisation du navigateur peut expirer sans écriture. Annoncer
 chaque attachement CDP au moment où il est lancé et, en cas d’échec, relancer

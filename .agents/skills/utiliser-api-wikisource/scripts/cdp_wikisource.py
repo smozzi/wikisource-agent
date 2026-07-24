@@ -432,11 +432,15 @@ def preflight(cdp, session_id, manifest, operations):
 def normalize_saved_wikitext(text):
     """Reproduit seulement les normalisations de sauvegarde observées de MediaWiki."""
     text = text.rstrip("\n")
-    return re.sub(
+    text = re.sub(
         r"[ \t]*\n+(?=<noinclude>\s*<references\s*/>)",
         "",
         text,
     )
+    if text.endswith("<noinclude></noinclude>"):
+        text = text[:-23].rstrip("\n")
+    return text
+
 
 
 def append_journal(path, record):

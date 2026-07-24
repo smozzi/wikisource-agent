@@ -10,10 +10,11 @@ Suivre [Aide:Transcription](https://fr.wikisource.org/wiki/Aide:Transcription) e
 
 ## Organiser la page
 
-- ne pas placer les en-têtes courants, pieds de page ni numéros de page dans le corps transclus ; leur saisie dans les champs dédiés est facultative ;
+- ne pas placer les en-têtes courants, pieds de page ni numéros de page dans le corps transclus ; leur saisie dans les champs dédiés est facultative ; lorsqu’ils sont transcrits, employer notamment `{{nr|gauche|centre|droite}}` dans le `noinclude` initial, reproduire seulement les éléments réellement imprimés et placer le folio du bon côté d’après le fac-similé, conformément à [Aide:Entête et pied de page](https://fr.wikisource.org/wiki/Aide:Ent%C3%AAte_et_pied_de_page) ;
 - employer `{{t2}}` à `{{t6}}` dans l’espace `Page:` en respectant la hiérarchie ; réserver les boîtes de titre éditoriales telles que `{{titre}}` à l’espace principal ;
+- les modèles `{{t2}}` à `{{t6}}` ne mettent pas le texte en gras par défaut ; lorsque le fac-similé imprime un titre gras, l’indiquer explicitement, par exemple avec `|fw=bold` ou `'''…'''`, puis contrôler le rendu ;
 - laisser les alinéas ordinaires au rendu automatique ; employer `{{Alinéa}}` ou `{{SA}}` seulement lorsque la mise en page l’exige ;
-- quand un paragraphe commence réellement en tête de page, commencer par `<nowiki />`, puis une ligne vide ; ne pas le faire si la page poursuit le paragraphe précédent ou dans un contexte, tel que `<poem>`, où la documentation l’exclut ;
+- quand un nouveau paragraphe avec alinéa commence en tête de page ou après un titre ou un séparateur, placer `<nowiki />`, puis une ligne vide, afin de préserver cette indentation conformément à [Aide:Nowiki](https://fr.wikisource.org/wiki/Aide:Nowiki) ; ne pas le faire si le texte poursuit le paragraphe précédent ou dans un contexte, tel que `<poem>`, où la documentation l’exclut ;
 - éviter les retours à la ligne internes à un paragraphe, notamment autour des illustrations, car ils peuvent créer des retraits parasites.
 
 ## Encoder les notes

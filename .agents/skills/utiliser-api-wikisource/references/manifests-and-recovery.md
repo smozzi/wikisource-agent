@@ -15,7 +15,8 @@ Dernière vérification : 2026-07-21.
 }
 ```
 
-Limiter le manifeste à huit opérations. Pour `Page:`, fournir les zones `noinclude` canoniques et éviter un saut final susceptible d’être normalisé.
+Limiter le manifeste à huit opérations. Les chemins spécifiés dans `text_file` sont **relatifs à l’emplacement du fichier manifeste lui-même** (par exemple `../pages/corrected/page-0001.txt` pour `publication/manifest.json`, ou `../../pages/corrected/...` pour un manifeste au sein d’un dossier `lots/lot-XXXX/`). Pour `Page:`, fournir les zones `noinclude` canoniques ; la normalisation automatique du `<noinclude></noinclude>` final par MediaWiki est gérée par le client.
+
 
 ## Synchronisation
 
