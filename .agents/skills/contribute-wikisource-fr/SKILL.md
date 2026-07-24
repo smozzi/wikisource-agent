@@ -19,7 +19,7 @@ Configurer `PROJECT.toml`, déposer le PDF ou DjVu au chemin déclaré, puis ex�
 
 ## Préparer et relire un lot
 
-Créer un lot borné avec `./ws lot init`. Conserver l’OCR dans `pages/raw/` et le wikicode relu dans `pages/corrected/`. Appliquer `./ws typography <lot>` avant la relecture humaine ; le script corrige seulement des cas sûrs et son audit ne prouve jamais la correction éditoriale.
+Créer un lot borné avec `./ws lot init`. Traiter `pages/raw/` comme la couche texte embarquée extraite du fac-similé ; lorsqu’un OCR externe existe sous `pages/ocr/`, l’employer comme meilleur brouillon disponible sans écraser cette couche de repli. Conserver le wikicode relu dans `pages/corrected/`. Appliquer `./ws typography <lot>` avant la relecture humaine ; le script corrige seulement des cas sûrs et son audit ne prouve jamais la correction éditoriale.
 
 Lire puis appliquer :
 

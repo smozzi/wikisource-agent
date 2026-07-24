@@ -55,7 +55,8 @@ imprimée comme nom de fichier.
 
 Produire séparément :
 
-- la couche texte embarquée, sans correction, dans un fichier texte par vue ;
+- la couche texte embarquée, sans correction, dans `pages/raw/`, avec un
+  fichier texte par vue ;
 - une image fidèle par vue, à une résolution suffisante pour la relecture ;
 - si nécessaire, un PDF dérivé destiné à l’OCR externe ;
 - un manifeste reliant chaque vue au texte, à l’image, à la pagination imprimée
@@ -72,16 +73,21 @@ facsimile/
   source/
   derived/
   images/
-  text-layer/
 pages/
   raw/
-    external-ocr/
+  ocr/
+    moteur-version/
       markdown/
       json/
+      tables/
+  corrected/
 ```
 
 Adapter les noms aux conventions du projet. Séparer dans tous les cas les
-sources immuables, les dérivés reproductibles, l’OCR brut et le wikicode relu.
+sources immuables, la couche texte embarquée, l’OCR externe brut et le wikicode
+relu. Ne pas conserver une seconde copie de la couche embarquée lorsque
+`pages/raw/` contient déjà ces fichiers : ce répertoire est son emplacement
+canonique.
 Exclure du contrôle de version les fichiers volumineux reproductibles lorsque
 le projet le prévoit, mais versionner les manifestes, paramètres, sommes de
 contrôle et diagnostics nécessaires à leur reconstruction.
@@ -101,6 +107,11 @@ Conserver pour chaque vue :
 - le modèle et les paramètres employés ;
 - le lien avec l’identifiant stable de la vue ;
 - les erreurs, absences et reprises éventuelles.
+
+Ne pas remplacer silencieusement `pages/raw/` par ces sorties. Documenter l’OCR
+externe comme brouillon prioritaire pour la transcription lorsqu’il est complet
+et de meilleure qualité ; employer `pages/raw/` comme repli pour une vue
+absente ou inexploitable. Dans tous les cas, l’image reste la source de vérité.
 
 Ne placer aucune clé API dans le corpus, les journaux ou le dépôt. Obtenir
 l’accord de l’utilisateur avant une opération payante ou un téléversement
